@@ -15,6 +15,10 @@ import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
 public abstract class Vehiculo implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String matricula, marca, modelo;
 	private boolean disponible = true; // un coche disponible
 
