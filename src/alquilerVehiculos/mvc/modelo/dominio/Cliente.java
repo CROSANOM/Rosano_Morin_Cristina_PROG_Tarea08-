@@ -7,6 +7,10 @@ import java.util.regex.Pattern;
 
 public class Cliente implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// atributos
 	private String nombre;
 	private String dni;
