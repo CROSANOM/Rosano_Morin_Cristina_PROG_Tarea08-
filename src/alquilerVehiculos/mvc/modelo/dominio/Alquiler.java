@@ -11,7 +11,7 @@ import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
  * @author crosanom
  *
  */
-// implentar serializable 
+// implentar serializable _ 
 
 public class Alquiler implements Serializable {
 	// atributos de la clase Alquiler.
