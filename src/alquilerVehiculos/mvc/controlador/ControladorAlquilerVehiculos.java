@@ -16,6 +16,7 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 	IUTextualVista vista;
 
 	// constructor
+	
 	/**
 	 * @param modelo
 	 * @param vista
@@ -37,10 +38,9 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 		modelo.leerVehiculos();
 		modelo.leerAlquileres();
 		vista.comenzar();
-		System.out.println("HastaPronto");
+		System.out.println("HastaPronto, gracias :-D");
 	}
 
-	
 	public void salir() {
 		modelo.escribirClientes();
 		modelo.escribirVehiculos();
@@ -61,11 +61,12 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 	public Cliente buscarCliente(String dni) {
 		return modelo.buscarCliente(dni);
 	}
-	// modificar crear cliente 
+
+	// modificar crear cliente
 	public List<Cliente> obtenerClientes() {
 		return modelo.obtenerClientes();
 	}
-	
+
 	@Override
 	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
 		modelo.anadirVehiculo(vehiculo, tipoVehiculo);
@@ -76,7 +77,6 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 		modelo.borrarVehiculo(matricula);
 	}
 
-
 	@Override
 	public Vehiculo buscarVehiculo(String matricula) {
 		return modelo.buscarVehiculo(matricula);
@@ -86,7 +86,6 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 	public List<Vehiculo> obtenerVehiculos() {
 		return modelo.obtenerVehiculos();
 	}
-
 
 	@Override
 	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
@@ -100,7 +99,7 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 	}
 
 	public List<Alquiler> obtenerAlquileresAbiertos() {
-		return modelo.obtenerAlquileres();
+		return modelo.obtenerAlquileresAbiertos();
 	}
 
 	@Override
@@ -108,6 +107,5 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

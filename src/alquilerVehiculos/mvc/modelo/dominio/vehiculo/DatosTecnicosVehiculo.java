@@ -8,6 +8,10 @@ public class DatosTecnicosVehiculo implements Serializable {
 
 	// atributos
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int cilindrada;
 	private int numerosPlazas;
 	private int pma;

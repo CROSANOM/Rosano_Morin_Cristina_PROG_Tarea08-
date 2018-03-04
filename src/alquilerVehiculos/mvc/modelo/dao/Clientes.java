@@ -20,20 +20,27 @@ import java.util.Vector;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
-
-public class Clientes {
+/**
+ * @author crosanom
+ *
+ */
+public class Clientes { // Clientes clase
 
 	// atributos
-	private Map<String, Cliente> clientes;
-	private final String FICHERO_CLIENTES = "datos/clientes.dat";
+	private Map<String, Cliente> clientes; // interfaz MAP que se le pasan dos objetos como parametro tipo String y
+											// Cliente
+	private final String FICHERO_CLIENTES = "datos/clientes.dat";// ruta del fichero
 
 	// constructor
 
 	public Clientes() {
-		clientes = new HashMap<String, Cliente>(); // al constructor de cliente se le pasa obejto HashMap
+		clientes = new HashMap<String, Cliente>();
 	}
 
-	// Crear un vector de ClientesOrdenados
+	// Crear una lista de ClientesOrdenados que tiene como objetos clientesOrdenados
+	/**
+	 * @return vector de Clientes ordenados
+	 */
 	public List<Cliente> getClientes() {
 		List<Cliente> clientesOrdenados = new Vector<Cliente>(clientes.values());
 		Collections.sort(clientesOrdenados, new Comparator<Cliente>() {
@@ -73,17 +80,21 @@ public class Clientes {
 	}
 
 	// reformular CalcularUltimoIdentificador
+	/**
+	 * @return identificador
+	 */
 	private int calcularUltimoIdentificador() {
 		int ultimoIdentificador = 0;
 		for (Cliente cliente : clientes.values())
 			if (cliente.getIdentificador() > ultimoIdentificador)
 				ultimoIdentificador = cliente.getIdentificador();
+
 		return ultimoIdentificador;
 
 	}
 
 	// escribirClientes
-	
+
 	public void escribirClientes() {
 		File fichero = new File(FICHERO_CLIENTES);
 		try {
@@ -104,30 +115,35 @@ public class Clientes {
 	 * indiceNoSuperaTamano)
 	 */
 
-	//AHORA 
-	
-	
-		public void anadirCliente(Cliente cliente) {
-			if (clientes.containsKey(cliente.getDni()))
-				throw new ExcepcionAlquilerVehiculos("Ya existe un cliente con dicho DNI");
-			else
-				clientes.put(cliente.getDni(), cliente);
-		}
-
-		
-		public void borrarCliente(String dni) {
-			if (clientes.containsKey(dni)) 
-				clientes.remove(dni);
-			else 
-				throw new ExcepcionAlquilerVehiculos("El cliente a borrar no existe");
-		}
-		
-		public Cliente buscarCliente(String dni) {
-			if (clientes.containsKey(dni))
-				return new Cliente(clientes.get(dni));
-			else
-				return null;
-		}
-
-
+	/**
+	 * @param cliente
+	 */
+	public void anadirCliente(Cliente cliente) {
+		if (clientes.containsKey(cliente.getDni()))
+			throw new ExcepcionAlquilerVehiculos("Ya existe un cliente con dicho DNI");
+		else
+			clientes.put(cliente.getDni(), cliente);
 	}
+
+	/**
+	 * @param dni
+	 */
+	public void borrarCliente(String dni) {
+		if (clientes.containsKey(dni))
+			clientes.remove(dni);
+		else
+			throw new ExcepcionAlquilerVehiculos("El cliente a borrar no existe");
+	}
+
+	/**
+	 * @param dni
+	 * @return
+	 */
+	public Cliente buscarCliente(String dni) {
+		if (clientes.containsKey(dni))
+			return new Cliente(clientes.get(dni));
+		else
+			return null;
+	}
+
+}

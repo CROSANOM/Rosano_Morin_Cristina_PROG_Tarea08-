@@ -1,15 +1,12 @@
 package alquilerVehiculos.mvc.vista;
 
-import alquilerVehiculos.modelo.AlquilerVehiculos;
 import alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
-import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.vista.utilidades.Consola;
-import alquilerVehiculos.mvc.vista.utilidades.Entrada;
 
 public class IUTextual implements IUTextualVista {
 
@@ -24,13 +21,6 @@ public class IUTextual implements IUTextualVista {
 
 	// SetControlado(Controlador )
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * alquilerVehiculos.mvc.vista.IUTextualVista#setControlador(alquilerVehiculos.
-	 * mvc.controlador.IControladorAlquilerVehiculo)
-	 */
 	@Override
 	public void setControlador(IControladorAlquilerVehiculo controlador) {
 		this.controlador = controlador;
@@ -39,11 +29,6 @@ public class IUTextual implements IUTextualVista {
 
 	// Metodo de comenzar ( getOpcionSegunOrdinal ) metodo de Option
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.mvc.vista.IUTextualVista#comenzar()
-	 */
 	@Override
 	public void comenzar() {
 		int ordinalOpcion;
@@ -56,26 +41,15 @@ public class IUTextual implements IUTextualVista {
 	}
 
 	// metodo Salir
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.mvc.vista.IUTextualVista#salir()
-	 */
 
 	public void salir() {
-		System.out.println("Hasta Pronto, gracias");
+		System.out.println("Hasta Pronto, gracias :-D");
 		controlador.salir();
 	}
 
 	// Metodos de Vehiculos
 
 	// ListarVehiculos
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.mvc.vista.IUTextualVista#listarVehiculos()
-	 */
 
 	public void listarVehiculos() {
 		Consola.mostrarCabecera("Listar Vehiculos");
@@ -87,11 +61,6 @@ public class IUTextual implements IUTextualVista {
 	}
 
 	// buscarTurismo
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.mvc.vista.IUTextualVista#buscarVehiculo()
-	 */
 
 	public void buscarVehiculo() {
 		Consola.mostrarCabecera("Buscar Vehiculo");
@@ -102,11 +71,6 @@ public class IUTextual implements IUTextualVista {
 	}
 
 	// borrarTurismo
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.mvc.vista.IUTextualVista#borrarVehiculo()
-	 */
 
 	public void borrarVehiculo() {
 		Consola.mostrarCabecera("Borrar Vehiculo");
@@ -119,11 +83,7 @@ public class IUTextual implements IUTextualVista {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.mvc.vista.IUTextualVista#anadirVehiculo()
-	 */
+	// anadirVehiculo
 
 	public void anadirVehiculo() {
 		Consola.mostrarCabecera("Añadir vehiculo");
@@ -141,11 +101,6 @@ public class IUTextual implements IUTextualVista {
 	// metodos de Clientes
 
 	// listar
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.mvc.vista.IUTextualVista#listarClientes()
-	 */
 
 	public void listarClientes() {
 		Consola.mostrarCabecera("Listar clientes");
@@ -190,12 +145,6 @@ public class IUTextual implements IUTextualVista {
 
 	// AbriAlquiler
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.mvc.vista.IUTextualVista#abrirAlquiler()
-	 */
-
 	public void abrirAlquiler() {
 
 		Consola.mostrarCabecera("Abrir Alquiler");
@@ -217,11 +166,7 @@ public class IUTextual implements IUTextualVista {
 	}
 
 	// cerrarAlquiler
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.mvc.vista.IUTextualVista#cerrarAlquiler()
-	 */
+	
 
 	public void cerrarAlquiler() {
 		Consola.mostrarCabecera("Cerrar Alquiler");

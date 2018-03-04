@@ -111,7 +111,7 @@ public class Cliente implements Serializable {
 
 	/**
 	 * @param dni
-	 * @return boolean 
+	 * @return boolean
 	 */
 	private boolean compruebaDni(String dni) {
 
@@ -140,8 +140,7 @@ public class Cliente implements Serializable {
 	}
 
 	public static void aumentarUltimoIdentificador(Object calcularUltimoIdentificador) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 }

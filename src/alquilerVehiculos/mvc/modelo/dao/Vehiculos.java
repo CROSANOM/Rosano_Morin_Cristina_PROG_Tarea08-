@@ -26,16 +26,20 @@ public class Vehiculos {
 	private Map <String , Vehiculo>vehiculos;
 	private final String FICHERO_VEHICULOS = "datos/vehiculos.dat";
 	
-	// constructor Vehiculo se le pasa un mapa de vehiculos ( matricula y vehiculos) 
+	// constructor Vehiculo 
 	public Vehiculos() {
 		vehiculos = new HashMap<String ,Vehiculo>();
 		
 	}
 	// copiar 
+	/**
+	 * @return vector de vehiculos 
+	 */
 	public List<Vehiculo> getVehiculos() {
 		return new Vector<Vehiculo>(vehiculos.values());
 	}
 
+	
 	public void leerVehiculos() {
 		File fichero = new File(FICHERO_VEHICULOS);
 		ObjectInputStream entrada;
@@ -74,13 +78,20 @@ public class Vehiculos {
 		}
 	}
 	
-	public void anadirVehiculo(Vehiculo vehiculo) {
+	/**
+	 * @param vehiculo
+	 * @param tipoVehiculo
+	 */
+	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
 		if (vehiculos.containsKey(vehiculo.getMatricula()))
 			throw new ExcepcionAlquilerVehiculos("Ya existe un vehículo con esa matríucula");
 		else
 			vehiculos.put(vehiculo.getMatricula(), vehiculo);
 	}
 	
+	/**
+	 * @param matricula
+	 */
 	public void borrarVehiculo(String matricula) {
 		if (vehiculos.containsKey(matricula)) 
 			vehiculos.remove(matricula);
@@ -88,6 +99,10 @@ public class Vehiculos {
 			throw new ExcepcionAlquilerVehiculos("El vehículo a borrar no existe");
 	}
 	
+	/**
+	 * @param matricula
+	 * @return
+	 */
 	public Vehiculo buscarVehiculo(String matricula) {
 		if (vehiculos.containsKey(matricula)) 
 			return vehiculos.get(matricula);

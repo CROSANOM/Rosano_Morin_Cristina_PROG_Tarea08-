@@ -28,22 +28,17 @@ public interface IModeloAlquilerVehiculos {
 	Alquileres getAlquileres();
 
 	/**
-	 * @return
+	 * @return coleccion de clientes
 	 */
-	List <Cliente> ObtenerCliente();
+	List<Cliente> ObtenerCliente();
 
 	/**
-	 * @return
+	 * @return coleccion de vehiculos
 	 */
-	List <Vehiculo>ObtenerVehiculos();
+	List<Vehiculo> ObtenerVehiculos();
 
 	/**
-	 * @return 
-	 */
-	List<Alquiler> obtenerAlquileres();
-
-	/**
-	 * @return 
+	 * @return coleccion de alquileres abiertos
 	 */
 	List<Alquiler> obtenerAlquileresAbiertos();
 
@@ -93,27 +88,29 @@ public interface IModeloAlquilerVehiculos {
 	 */
 	void cerrarAlquiler(Vehiculo vehiculo);
 
-
-	// metodos de lectura - escritura 
-	
 	void leerClientes();
-	
+
 	void escribirClientes();
-	
+
 	void leerVehiculos();
-	
+
 	void escribirVehiculos();
-	
+
 	void leerAlquileres();
-	
+
 	void escribirAlquileres();
 
 	String toString();
 
+	/**
+	 * @return coleccion de Clientes
+	 */
 	List<Cliente> obtenerClientes();
 
+	/**
+	 * @return coleccion vehiculos
+	 */
 	List<Vehiculo> obtenerVehiculos();
-
 
 
 }

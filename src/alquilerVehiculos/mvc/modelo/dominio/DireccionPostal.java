@@ -8,6 +8,10 @@ import java.util.regex.Pattern;
 
 public class DireccionPostal implements Serializable {
 
+	/**
+	 * atributos
+	 */
+	private static final long serialVersionUID = 1L;
 	private String calle;
 	private String localidad;
 	private String codigoPostal;
@@ -61,11 +65,10 @@ public class DireccionPostal implements Serializable {
 		Pattern cpPatron = Pattern.compile("0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-2][0-9]{3}\n" + "\n" + "$");
 		Matcher emparejador = cpPatron.matcher((codigoPostal));
 		codigoPostalValidado = emparejador.matches(); // se guarda el resultado del método emparejador.matches en una
-		
+
 		return codigoPostalValidado;
 
 	}
-
 
 	/**
 	 * @param calle

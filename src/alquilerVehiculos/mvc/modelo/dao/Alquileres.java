@@ -27,17 +27,20 @@ public class Alquileres {
 		alquileres = new Vector<Alquiler>();
 	}
 
-	// Vector instancia el vector de Alquileres en objeto alquileres
+	// Vector de alquileres
 
 	public List<Alquiler> getAlquileres() {
 		return new Vector<Alquiler>(alquileres);
 
 	}
-	// METODOS de alquiler 
+	// METODOS de alquiler
 
 	// leer
 	public void leerAlquileres() {
 		File fichero = new File(FICHERO_ALQUILERES);
+		System.out.println("Esta es la ruta de mi fichero" + fichero.getPath());
+		System.out.println("Esta es la ruta absoluta de mi fichero" + fichero.getAbsolutePath());
+
 		ObjectInputStream entrada;
 		try {
 			entrada = new ObjectInputStream(new FileInputStream(fichero));// se crear un objetoInput al que se le pasa
@@ -53,14 +56,14 @@ public class Alquileres {
 				// Excepciones se capturan para que se pare el programa
 			} catch (EOFException eo) {
 				entrada.close();
-				System.out.println("Fichero trabajos leÃ­do satisfactoriamente.");
+				System.out.println("Fichero alquileres leí­do satisfactoriamente.");
 			} catch (ClassNotFoundException e) {
 				System.out.println("No puedo encontrar la clase que tengo que leer.");
 			} catch (IOException e) {
 				System.out.println("Error inesperado de Entrada/Salida.");
 			}
 		} catch (IOException e) {
-			System.out.println("No puedo abrir el fihero de trabajos.");
+			System.out.println("No puedo abrir el fihero de alquieres.");
 		}
 	}
 
@@ -85,7 +88,7 @@ public class Alquileres {
 
 	}
 
-	// abrir alquiler ( CompruebaExistencia ) 
+	// abrir alquiler con llamada a metodo ( CompruebaExistencia )
 
 	/**
 	 * @param cliente
@@ -95,11 +98,9 @@ public class Alquileres {
 		compruebaExistencia(vehiculo);
 		// int indice =alquieres.get(indice);
 		alquileres.addAll(alquileres);
-
 	}
 
-	
-	// compruebaExista (indiceNosuperaTamano) 
+	// compruebaExista (indiceNosuperaTamano)
 	/**
 	 * @param vehiculo
 	 */
@@ -121,6 +122,10 @@ public class Alquileres {
 
 	}
 
+	/**
+	 * @param indice
+	 * @return boolean si indice supera false, si es menor true 
+	 */
 	private boolean indiceNoSuperaTamano(int indice) {
 		return indice < alquileres.size();
 
@@ -139,7 +144,6 @@ public class Alquileres {
 			throw new ExcepcionAlquilerVehiculos("No hay ningun alquiler Abierto");
 	}
 
-	
 	/**
 	 * @param vehiculo
 	 * @return

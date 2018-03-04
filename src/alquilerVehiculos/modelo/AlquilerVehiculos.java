@@ -1,16 +1,11 @@
 package alquilerVehiculos.modelo;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-
 import alquilerVehiculos.mvc.modelo.dao.Alquileres;
 import alquilerVehiculos.mvc.modelo.dao.Clientes;
 import alquilerVehiculos.mvc.modelo.dao.Vehiculos;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
-import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
-import alquilerVehiculos.mvc.modelo.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
@@ -35,32 +30,16 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 
 	// Metodos getters de atributos de AlquilerVehiculos
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#getClientes()
-	 */
-
 	@Override
 	public Clientes getClientes() {
 		return clientes;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#getVehiculos()
-	 */
 	@Override
 	public Vehiculos getVehiculos() {
 		return vehiculos;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#getAlquileres()
-	 */
 	@Override
 	public Alquileres getAlquileres() {
 		return alquileres;
@@ -79,14 +58,8 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 		return vehiculos.getVehiculos();
 
 	}
-	
-	// modificar Obtener Alquileres 
-	
-	@Override
-	
-	public List<Alquiler> obtenerAlquileres() {
-		return obtenerAlquileresAbiertos();
-	}
+
+
 
 	@Override
 
@@ -95,7 +68,7 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 		return alquileres.getAlquileres();
 
 	}
-	
+
 	@Override
 	public void anadirCliente(Cliente cliente) {
 		clientes.anadirCliente(cliente);
@@ -137,25 +110,15 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 		return clientes.buscarCliente(dni);
 	}
 
-	
 	@Override
 	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
 		vehiculos.anadirVehiculo(vehiculo, tipoVehiculo);
 	}
 
-
 	@Override
 	public void borrarVehiculo(String matricula) {
 		vehiculos.borrarVehiculo(matricula);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * alquilerVehiculos.modelo.IModeloAlquilerVehiculos#buscarVehiculo(java.lang.
-	 * String)
-	 */
 
 	@Override
 	public Vehiculo buscarVehiculo(String matricula) {
@@ -164,40 +127,16 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 
 	// metodos para los alquileres
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#abrirAlquiler(
-	 * alquilerVehiculos.mvc.modelo.dominio.Cliente,
-	 * alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo)
-	 */
 	@Override
 	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
 		alquileres.abrirAlquiler(cliente, vehiculo);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#cerrarAlquiler(
-	 * alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo)
-	 */
 	@Override
 	public void cerrarAlquiler(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#toString()
-	 */
 	@Override
 	public String toString() {
 		return "AlquilerVehiculos [clientes=" + clientes + ", vehiculos=" + vehiculos + ", alquileres=" + alquileres
@@ -215,10 +154,5 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
-
-
-
 
 }
