@@ -2,6 +2,7 @@ package alquilerVehiculos.modelo;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import alquilerVehiculos.mvc.modelo.dao.Alquileres;
 import alquilerVehiculos.mvc.modelo.dao.Clientes;
@@ -12,7 +13,6 @@ import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
-
 
 /**
  * @author crosanom
@@ -26,7 +26,7 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 	private Alquileres alquileres;
 
 	// constructor
-	
+
 	public AlquilerVehiculos() {
 		clientes = new Clientes();
 		vehiculos = new Vehiculos();
@@ -40,7 +40,7 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 	 * 
 	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#getClientes()
 	 */
-	
+
 	@Override
 	public Clientes getClientes() {
 		return clientes;
@@ -66,129 +66,84 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 		return alquileres;
 	}
 
-	// Getters clientes, vehiculos, alquileres : return [ ] )
+	// modificar Obtener Clientes
+	public List<Cliente> obtenerClientes() {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#ObtenerCliente()
-	 */
-	@Override
-	public Cliente[] ObtenerCliente() {
 		return clientes.getClientes();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#ObtenerVehiculos()
-	 */
+	// modificar Obtener Vehiculos
+
+	public List<Vehiculo> obtenerVehiculos() {
+
+		return vehiculos.getVehiculos();
+
+	}
+	
+	// modificar Obtener Alquileres 
+	
 	@Override
-	public Vehiculo[] ObtenerVehiculos() {
-		return vehiculos.getVehiculo();
+	
+	public List<Alquiler> obtenerAlquileres() {
+		return obtenerAlquileresAbiertos();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#obtenerAlquileres()
-	 */
 	@Override
-	public Alquiler[] obtenerAlquileres() {
+
+	public List<Alquiler> obtenerAlquileresAbiertos() {
+
 		return alquileres.getAlquileres();
+
 	}
-
-	// metodos clientes ( anadir, borrar, buscar )
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#anadirCliente(
-	 * alquilerVehiculos.mvc.modelo.dominio.Cliente)
-	 */
+	
 	@Override
 	public void anadirCliente(Cliente cliente) {
 		clientes.anadirCliente(cliente);
 	}
 
+	// acceso para leer - escribir clientes, vehiculos, alquileres
 
-	// acceso para leer - escribir clientes, vehiculos, alquileres 
-	
 	public void leerClientes() {
 		clientes.leerClientes();
 	}
 
-	
 	public void escribirClientes() {
-		clientes.escribirClientes();		
+		clientes.escribirClientes();
 	}
-
 
 	public void leerVehiculos() {
 		vehiculos.leerVehiculos();
 	}
 
-	
 	public void escribirVehiculos() {
 		vehiculos.escribirVehiculos();
 	}
-
 
 	public void leerAlquileres() {
 		alquileres.leerAlquileres();
 	}
 
-	
 	public void escribirAlquileres() {
 		alquileres.escribirAlquileres();
 	}
 
-	
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * alquilerVehiculos.modelo.IModeloAlquilerVehiculos#borrarCliente(java.lang.
-	 * String)
-	 */
 	@Override
 	public void borrarCliente(String dni) {
 		clientes.borrarCliente(dni);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * alquilerVehiculos.modelo.IModeloAlquilerVehiculos#buscarCliente(java.lang.
-	 * String)
-	 */
 	@Override
 	public Cliente buscarCliente(String dni) {
 		return clientes.buscarCliente(dni);
 	}
 
-	// metodos de los Vehiculos
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#anadirVehiculo(
-	 * alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo,
-	 * alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo)
-	 */
+	
 	@Override
 	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
 		vehiculos.anadirVehiculo(vehiculo, tipoVehiculo);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * alquilerVehiculos.modelo.IModeloAlquilerVehiculos#borrarVehiculo(java.lang.
-	 * String)
-	 */
+
 	@Override
 	public void borrarVehiculo(String matricula) {
 		vehiculos.borrarVehiculo(matricula);
@@ -249,90 +204,21 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 				+ "]";
 	}
 
-//	@Override
-//	public void anadirDatosPrueba() {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	@Override
+	public List<Cliente> ObtenerCliente() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	// Metodo con datos de pruebas
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see alquilerVehiculos.modelo.IModeloAlquilerVehiculos#anadirDatosPrueba()
-	 */
-//	@Override
-//	public void anadirDatosPrueba() {
-//		System.out.println("Prueba con datos del sistema, PRUEBA1 ");
-//
-//		// Cliente (String nombre, String dni, DireccionPostal (String calle, String
-//		// localidad, String codigoPostal)
-//
-//		Cliente clientep1 = new Cliente("Manolo", "75675656T", new DireccionPostal("Pandereta", "Chiclana", "11345"));
-//		Cliente clientep2 = new Cliente("Manoli", "75675656R", new DireccionPostal("Oaa", "Chiclana", "11345"));
-//		Cliente clientep3 = new Cliente("Manolo", "75675654T", new DireccionPostal("Pandereta", "Chiclana", "11345"));
-//		Cliente clientep4 = new Cliente("Manolo", "65675656T", new DireccionPostal("Pandereta", "Chiclana", "11345"));
-//
-//		anadirCliente(clientep1);
-//		anadirCliente(clientep2);
-//		anadirCliente(clientep3);
-//		// comprobar excepcion anadir cliente repetido
-//		// anadirCliente(clientep3);
-//		//
-//		System.out.println("Imprimir clienteP3" + clientep3.toString());
-//
-//		// Vehiculo public Vehiculo(String matricula, String marca, String modelo,
-//		// DatosTecnicosVehiculo (int cilindrada, int numerosPlazas, int pma)) {
-//		// Crea tipoVehiculo y imprime ver resultado
-//
-//		Vehiculo vehiculop1 = TipoVehiculo.AUTOBUS.getInstancia("2223GTR", "MarcaBus", "busModelo",
-//				new DatosTecnicosVehiculo(1200, 72, 120));
-//		Vehiculo vehiculop2 = TipoVehiculo.DECARGA.getInstancia("2223TTR", "Pegaso", "camionModelo",
-//				new DatosTecnicosVehiculo(1200, 3, 500));
-//		Vehiculo vehiculop3 = TipoVehiculo.TURISMO.getInstancia("2223TTT", "Wolskwagen", "polo",
-//				new DatosTecnicosVehiculo(1200, 1, 500));
-//		Vehiculo vehiculop4 = TipoVehiculo.AUTOBUS.getInstancia("2223TDT", "MIAUTOBUS", "polo",
-//				new DatosTecnicosVehiculo(1200, 1, 500));
-//		Vehiculo vehiculop5 = TipoVehiculo.AUTOBUS.getInstancia("2223TMT", "MIAUTOBUS", "ADR",
-//				new DatosTecnicosVehiculo(1200, 1, 500));
-//		System.out.println("Imprimir Vehiculos" + vehiculop1.toString() + "\n" + vehiculop2.toString());
-//
-//		// se Crea alquiler con vehiculo2
-//		Alquiler alquiler = new Alquiler(clientep1, vehiculop2);
-//		System.out.println("Imprimir alquiler" + alquiler.toString() + "\n" + vehiculop2.toString());
-//		System.out.println("Esta disponible " + vehiculop2 + vehiculop2.getDisponible());
-//
-//		// anadir vehiculo
-//		anadirVehiculo(vehiculop1, TipoVehiculo.AUTOBUS);
-//		System.out.println("VEHICULO1" + vehiculop1);
-//		anadirVehiculo(vehiculop2, TipoVehiculo.DECARGA);
-//		System.out.println("VEHICULO2" + vehiculop2);
-//		anadirVehiculo(vehiculop3, TipoVehiculo.TURISMO);
-//		System.out.println("VEHICULO3" + vehiculop3);
-//		anadirVehiculo(vehiculop4, TipoVehiculo.AUTOBUS);
-//		System.out.println("VEHICULO04" + vehiculop4);
-//		anadirVehiculo(vehiculop5, TipoVehiculo.DECARGA);
-//		System.out.println("VEHICULO05" + vehiculop5);
-//
-//		// Comprobar funcionalidad de abrir y cerrar alquiler
-//
-//		// Primero comprobar TipoVehiculo y su disponibilidad
-//		System.out.println("El vehiculo04 " + " es un " + vehiculop4.getTipoVehiculo() + " su disponibilidad es "
-//				+ vehiculop4.getDisponible());
-//		// abrir alquiler vehiculo4
-//		abrirAlquiler(clientep1, vehiculop4);
-//		// Al abrir el aquiler el coche cambia de disponibilidad
-//		System.out.println("Comprobar la disponibilidad del vehiculo04 al ABRIR Alquiler" + "\n" + "VEHICULO1 esta "
-//				+ vehiculop4.getDisponible());
-//		// cerrar alquiler vehiculo4
-//		cerrarAlquiler(vehiculop4);
-//		System.out.println("Comprobar la disponibilidad del vehiculo04 al CERRAR Alquiler " + "\n" + "VEHICULO1"
-//				+ vehiculop1.getDisponible());
-		
-		
+	@Override
+	public List<Vehiculo> ObtenerVehiculos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 
 
-}
 
+}

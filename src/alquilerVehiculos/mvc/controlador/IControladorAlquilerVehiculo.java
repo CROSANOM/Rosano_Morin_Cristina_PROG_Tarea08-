@@ -1,5 +1,7 @@
 package alquilerVehiculos.mvc.controlador;
 
+import java.util.List;
+
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
@@ -8,7 +10,7 @@ import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 public interface IControladorAlquilerVehiculo {
 
 	/**
-	 * llama a metodo de comenzar y datos prueba alquilerVehiculos
+	 * llama a metodo de comenzar
 	 */
 	void comenzar();
 
@@ -31,10 +33,7 @@ public interface IControladorAlquilerVehiculo {
 	 */
 	Cliente buscarCliente(String dni);
 
-	/**
-	 * @return
-	 */
-	Cliente[] obtenerClientes();
+	List<Cliente> obtenerClientes();
 
 	/**
 	 * @param vehiculo
@@ -55,10 +54,9 @@ public interface IControladorAlquilerVehiculo {
 	Vehiculo buscarVehiculo(String matricula);
 
 	/**
-	 * @return
+	 * @return coleccion de Vehiculos
 	 */
-	Vehiculo[] obtenerVehiculo();
-	// metodo de alquier
+	List<Vehiculo> obtenerVehiculos();
 
 	/**
 	 * @param cliente
@@ -72,10 +70,10 @@ public interface IControladorAlquilerVehiculo {
 	void cerrarAlquiler(Vehiculo vehiculo);
 
 	/**
-	 * @return
+	 * @return vector de alquileres
 	 */
-	Alquiler[] obtenerAlquiler();
+	List<Alquiler> obtenerAlquileresAbiertos();
 
-	// void anadirDatosPrueba();
+	Object obtenerVehiculo();
 
 }

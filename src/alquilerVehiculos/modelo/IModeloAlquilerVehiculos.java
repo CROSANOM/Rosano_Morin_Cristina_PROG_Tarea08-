@@ -1,5 +1,7 @@
 package alquilerVehiculos.modelo;
 
+import java.util.List;
+
 import alquilerVehiculos.mvc.modelo.dao.Alquileres;
 import alquilerVehiculos.mvc.modelo.dao.Clientes;
 import alquilerVehiculos.mvc.modelo.dao.Vehiculos;
@@ -28,17 +30,22 @@ public interface IModeloAlquilerVehiculos {
 	/**
 	 * @return
 	 */
-	Cliente[] ObtenerCliente();
+	List <Cliente> ObtenerCliente();
 
 	/**
 	 * @return
 	 */
-	Vehiculo[] ObtenerVehiculos();
+	List <Vehiculo>ObtenerVehiculos();
 
 	/**
 	 * @return 
 	 */
-	Alquiler[] obtenerAlquileres();
+	List<Alquiler> obtenerAlquileres();
+
+	/**
+	 * @return 
+	 */
+	List<Alquiler> obtenerAlquileresAbiertos();
 
 	/**
 	 * @param cliente
@@ -101,14 +108,12 @@ public interface IModeloAlquilerVehiculos {
 	
 	void escribirAlquileres();
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	String toString();
 
-//	// Metodo con datos de pruebas
-//	void anadirDatosPrueba();
+	List<Cliente> obtenerClientes();
+
+	List<Vehiculo> obtenerVehiculos();
+
+
 
 }
