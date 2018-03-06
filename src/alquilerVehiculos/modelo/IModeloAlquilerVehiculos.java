@@ -13,34 +13,19 @@ import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 public interface IModeloAlquilerVehiculos {
 
 	/**
-	 * @return the clientes
-	 */
-	Clientes getClientes();
-
-	/**
-	 * @return the vehiculos
-	 */
-	Vehiculos getVehiculos();
-
-	/**
-	 * @return the alquileres
-	 */
-	Alquileres getAlquileres();
-
-	/**
 	 * @return coleccion de clientes
 	 */
-	List<Cliente> ObtenerCliente();
+	List<Cliente> obtenerCliente();
 
 	/**
 	 * @return coleccion de vehiculos
 	 */
-	List<Vehiculo> ObtenerVehiculos();
+	List<Vehiculo> obtenerVehiculos();
 
 	/**
-	 * @return coleccion de alquileres abiertos
+	 * @return coleccion de alquileres
 	 */
-	List<Alquiler> obtenerAlquileresAbiertos();
+	List<Alquiler> obtenerAlquileres();
 
 	/**
 	 * @param cliente
@@ -105,12 +90,11 @@ public interface IModeloAlquilerVehiculos {
 	/**
 	 * @return coleccion de Clientes
 	 */
-	List<Cliente> obtenerClientes();
 
-	/**
-	 * @return coleccion vehiculos
-	 */
-	List<Vehiculo> obtenerVehiculos();
+	List<Alquiler> obtenerAlquileresAbiertos();
 
+	List<Alquiler> obtenerAlquileresCliente(String dni);
+
+	List<Alquiler> obtenerAlquileresVehiculos(String matricula);
 
 }

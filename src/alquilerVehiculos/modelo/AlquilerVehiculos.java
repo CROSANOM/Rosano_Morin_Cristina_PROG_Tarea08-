@@ -28,52 +28,85 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 		alquileres = new Alquileres();
 	}
 
-	// Metodos getters de atributos de AlquilerVehiculos
-
-	@Override
-	public Clientes getClientes() {
-		return clientes;
-	}
-
-	@Override
-	public Vehiculos getVehiculos() {
-		return vehiculos;
-	}
-
-	@Override
-	public Alquileres getAlquileres() {
-		return alquileres;
-	}
-
-	// modificar Obtener Clientes
-	public List<Cliente> obtenerClientes() {
-
-		return clientes.getClientes();
-	}
-
-	// modificar Obtener Vehiculos
-
-	public List<Vehiculo> obtenerVehiculos() {
-
-		return vehiculos.getVehiculos();
-
-	}
-
-
-
-	@Override
-
-	public List<Alquiler> obtenerAlquileresAbiertos() {
-
-		return alquileres.getAlquileres();
-
-	}
+	// Metodos clientes
 
 	@Override
 	public void anadirCliente(Cliente cliente) {
 		clientes.anadirCliente(cliente);
 	}
 
+	@Override
+	public void borrarCliente(String dni) {
+		clientes.borrarCliente(dni);
+	}
+
+	@Override
+	public Cliente buscarCliente(String dni) {
+		return clientes.buscarCliente(dni);
+	}
+	
+	@Override
+	public List<Cliente> obtenerCliente() {
+		return clientes.getClientes();
+	}
+
+	// metodos para Vehiculos
+
+	@Override
+	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
+		vehiculos.anadirVehiculo(vehiculo, tipoVehiculo);
+	}
+
+	@Override
+	public void borrarVehiculo(String matricula) {
+		vehiculos.borrarVehiculo(matricula);
+	}
+
+	@Override
+	public Vehiculo buscarVehiculo(String matricula) {
+		return vehiculos.buscarVehiculo(matricula);
+	}
+
+	@Override
+	public List<Vehiculo> obtenerVehiculos() {
+		return vehiculos.getVehiculos();
+	}
+
+	// metodos para los alquileres
+
+	@Override
+	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
+		alquileres.abrirAlquiler(cliente, vehiculo);
+	}
+
+	@Override
+	public void cerrarAlquiler(Vehiculo vehiculo) {
+		alquileres.cerrarAlquiler(vehiculo);
+	}
+
+	public List<Alquiler> obtenerAlquileres() {
+		return alquileres.getAlquileres();
+
+	}
+	
+
+	//  obtener Alquileres Abiertos
+	public List<Alquiler> obtenerAlquileresAbiertos() {
+		return alquileres.obtenerAlquileresAbiertos();
+
+	}
+
+ // obtenerAlquileresCliente ( String dni ) 
+	
+	public List<Alquiler> obtenerAlquileresCliente(String dni) {
+		return alquileres.obtenerAlquileresCliente(dni);
+
+	}
+
+	public List<Alquiler> obtenerAlquileresVehiculos(String matricula) {
+
+		return alquileres.obtenerAlquileresVehiculos(matricula);
+	}
 	// acceso para leer - escribir clientes, vehiculos, alquileres
 
 	public void leerClientes() {
@@ -101,58 +134,12 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 	}
 
 	@Override
-	public void borrarCliente(String dni) {
-		clientes.borrarCliente(dni);
-	}
-
-	@Override
-	public Cliente buscarCliente(String dni) {
-		return clientes.buscarCliente(dni);
-	}
-
-	@Override
-	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
-		vehiculos.anadirVehiculo(vehiculo, tipoVehiculo);
-	}
-
-	@Override
-	public void borrarVehiculo(String matricula) {
-		vehiculos.borrarVehiculo(matricula);
-	}
-
-	@Override
-	public Vehiculo buscarVehiculo(String matricula) {
-		return vehiculos.buscarVehiculo(matricula);
-	}
-
-	// metodos para los alquileres
-
-	@Override
-	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
-		alquileres.abrirAlquiler(cliente, vehiculo);
-	}
-
-	@Override
-	public void cerrarAlquiler(Vehiculo vehiculo) {
-
-	}
-
-	@Override
 	public String toString() {
 		return "AlquilerVehiculos [clientes=" + clientes + ", vehiculos=" + vehiculos + ", alquileres=" + alquileres
 				+ "]";
 	}
 
-	@Override
-	public List<Cliente> ObtenerCliente() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public List<Vehiculo> ObtenerVehiculos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

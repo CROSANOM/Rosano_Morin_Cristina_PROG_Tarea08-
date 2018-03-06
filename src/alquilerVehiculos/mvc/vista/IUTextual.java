@@ -11,7 +11,7 @@ import alquilerVehiculos.mvc.vista.utilidades.Consola;
 public class IUTextual implements IUTextualVista {
 
 	// atributo
-	private IControladorAlquilerVehiculo controlador;
+	IControladorAlquilerVehiculo controlador;
 
 	// constructor
 
@@ -45,6 +45,109 @@ public class IUTextual implements IUTextualVista {
 	public void salir() {
 		System.out.println("Hasta Pronto, gracias :-D");
 		controlador.salir();
+	}
+
+	// metodos alquileres
+
+	// metodo de alquileres
+
+	// AbriAlquiler
+
+	public void abrirAlquiler() {
+
+		Consola.mostrarCabecera("Abrir Alquiler");
+		String matricula = Consola.leerMatricula();
+		String dni = Consola.leerDni();
+		Vehiculo vehiculo = controlador.buscarVehiculo(matricula);
+		Cliente cliente = controlador.buscarCliente(dni);
+		if (vehiculo == null)
+			System.out.println("No existe un turismo con esa matrícula" + "\n");
+		else {
+			try {
+				controlador.abrirAlquiler(cliente, vehiculo);
+				System.out.println("Alquier Abierto Satisfactoriamente");
+			} catch (ExcepcionAlquilerVehiculos e) {
+				System.out.printf("ERROR: %s%n%n", e.getMessage());
+			}
+		}
+
+	}
+
+	// cerrarAlquiler
+
+	public void cerrarAlquiler() {
+		Consola.mostrarCabecera("Cerrar Alquiler");
+		String matricula = Consola.leerMatricula();
+		Vehiculo vehiculo = controlador.buscarVehiculo(matricula);
+		if (vehiculo == null)
+			System.out.println("ERROR: No existe un vehiculo con dicha matriÂ­cula\n");
+		else {
+			try {
+				controlador.cerrarAlquiler(vehiculo);
+				System.out.println("Alquiler cerrado satisfactoriamente");
+			} catch (ExcepcionAlquilerVehiculos e) {
+				System.out.printf("ERROR: %s%n%n", e.getMessage());
+			}
+		}
+	}
+
+	public void listarAlquileres() {
+		Consola.mostrarCabecera("Listar Alquiler");
+		for (Alquiler alquiler : controlador.obtenerAlquileresAbiertos()) {
+			if (alquiler != null)
+				System.out.println(alquiler);
+		}
+		System.out.println("");
+	}
+
+	// obtenerAlquileresAbiertos
+
+	public void obtenerAlquileresAbiertos() {
+
+		Consola.mostrarCabecera("Obtener Alquiler Abierto");
+
+		for (Alquiler alquileresAbiertos : controlador.obtenerAlquileresAbiertos()) {
+			System.out.println(alquileresAbiertos);
+
+		}
+
+	}
+
+	public void obtenerAlquileresCliente() {
+		String dni = Consola.leerDni();
+
+		try {// abre try
+			controlador.buscarCliente(dni);
+			Consola.mostrarCabecera("Listado de Alquileres por Cliente");
+			if (controlador.obtenerAlquileresCliente(dni).size() == 0) {
+				System.out.println("El cliente solicitado no tiene alquileres en curso");
+			} else {
+				for (Alquiler alquileresCliente : controlador.obtenerAlquileresCliente(dni)) {
+					System.out.println(alquileresCliente);
+				}
+			}
+		} // fin try //
+		catch (ExcepcionAlquilerVehiculos e) { // abre catch
+			System.out.printf("\nERROR: %s%n%n", e.getMessage());
+		}
+	}
+
+	public void obtenerAlquileresVehiculo() {
+		String matricula = Consola.leerMatricula();
+
+		try {
+			controlador.buscarVehiculo(matricula);
+			Consola.mostrarCabecera("Listado de Alquileres por vehículo");
+			if (controlador.obtenerAlquileresVehiculos(matricula).size() == 0) {
+				System.out.println("El vehículo solicitado no tiene alquileres en curso.");
+			} else {
+				for (Alquiler alquileresVehiculo : controlador.obtenerAlquileresVehiculos(matricula)) {
+					System.out.println(alquileresVehiculo);
+				}
+			}
+		} catch (ExcepcionAlquilerVehiculos e) {
+			System.out.printf("\nERROR: %s%n%n", e.getMessage());
+		}
 	}
 
 	// Metodos de Vehiculos
@@ -139,58 +242,6 @@ public class IUTextual implements IUTextualVista {
 		} catch (ExcepcionAlquilerVehiculos e) {
 			System.out.printf("ERROR: %s%n%n", e.getMessage());
 		}
-	}
-
-	// metodo de alquileres
-
-	// AbriAlquiler
-
-	public void abrirAlquiler() {
-
-		Consola.mostrarCabecera("Abrir Alquiler");
-		String matricula = Consola.leerMatricula();
-		String dni = Consola.leerDni();
-		Vehiculo vehiculo = controlador.buscarVehiculo(matricula);
-		Cliente cliente = controlador.buscarCliente(dni);
-		if (vehiculo == null)
-			System.out.println("No existe un turismo con esa matrícula" + "\n");
-		else {
-			try {
-				controlador.abrirAlquiler(cliente, vehiculo);
-				System.out.println("Alquier Abierto Satisfactoriamente");
-			} catch (ExcepcionAlquilerVehiculos e) {
-				System.out.printf("ERROR: %s%n%n", e.getMessage());
-			}
-		}
-
-	}
-
-	// cerrarAlquiler
-	
-
-	public void cerrarAlquiler() {
-		Consola.mostrarCabecera("Cerrar Alquiler");
-		String matricula = Consola.leerMatricula();
-		Vehiculo vehiculo = controlador.buscarVehiculo(matricula);
-		if (vehiculo == null)
-			System.out.println("ERROR: No existe un vehiculo con dicha matriÂ­cula\n");
-		else {
-			try {
-				controlador.cerrarAlquiler(vehiculo);
-				System.out.println("Alquiler cerrado satisfactoriamente");
-			} catch (ExcepcionAlquilerVehiculos e) {
-				System.out.printf("ERROR: %s%n%n", e.getMessage());
-			}
-		}
-	}
-
-	public void listarAlquileres() {
-		Consola.mostrarCabecera("Listar Alquiler");
-		for (Alquiler alquiler : controlador.obtenerAlquileresAbiertos()) {
-			if (alquiler != null)
-				System.out.println(alquiler);
-		}
-		System.out.println("");
 	}
 
 }

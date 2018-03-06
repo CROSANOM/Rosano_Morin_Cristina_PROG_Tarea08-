@@ -74,6 +74,11 @@ public interface IControladorAlquilerVehiculo {
 	 */
 	List<Alquiler> obtenerAlquileresAbiertos();
 
-	Object obtenerVehiculo();
+	List<Alquiler> obtenerAlquileres();
+	
+	List <Alquiler>obtenerAlquileresCliente(String dni);
+
+	List<Alquiler> obtenerAlquileresVehiculos(String matricula);
+	
 
 }

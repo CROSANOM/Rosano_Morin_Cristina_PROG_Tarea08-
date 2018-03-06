@@ -68,6 +68,28 @@ public enum Opcion {
 		public void ejecutar() {
 			vista.listarAlquileres();
 		}
+
+	},
+
+	LISTAR_ALQUILER_ABIERTOS("Listar alquileres Abiertos") {
+		public void ejecutar() {
+			vista.obtenerAlquileresAbiertos();
+
+		}
+	},
+
+	LISTAR_ALQUILER_CLIENTES("Listar alquileres por Cliente") {
+		public void ejecutar() {
+			vista.obtenerAlquileresCliente();
+
+		}
+	},
+
+	LISTAR_ALQUILER_VEHICULOS("Listar alquileres por Vehiculo") {
+		public void ejecutar() {
+			vista.obtenerAlquileresVehiculo();
+
+		}
 	};
 
 	// Atributos de la clase

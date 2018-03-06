@@ -27,8 +27,7 @@ public class Alquileres {
 		alquileres = new Vector<Alquiler>();
 	}
 
-	// Vector de alquileres
-
+	// Vector de alquileres modificado getAlquieresAbiertos
 	public List<Alquiler> getAlquileres() {
 		return new Vector<Alquiler>(alquileres);
 
@@ -38,9 +37,6 @@ public class Alquileres {
 	// leer
 	public void leerAlquileres() {
 		File fichero = new File(FICHERO_ALQUILERES);
-		System.out.println("Esta es la ruta de mi fichero" + fichero.getPath());
-		System.out.println("Esta es la ruta absoluta de mi fichero" + fichero.getAbsolutePath());
-
 		ObjectInputStream entrada;
 		try {
 			entrada = new ObjectInputStream(new FileInputStream(fichero));// se crear un objetoInput al que se le pasa
@@ -72,7 +68,7 @@ public class Alquileres {
 		File fichero = new File(FICHERO_ALQUILERES); // crea el fichero
 		try {
 			ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(fichero));// se crea el objeto
-																								// salida que es del
+																								// salida que es del //
 																								// tipo Object y le
 																								// pasamos un fichero
 			for (Alquiler alquiler : alquileres)// se recorren lo alquileres buscando alquileres
@@ -97,7 +93,7 @@ public class Alquileres {
 	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
 		compruebaExistencia(vehiculo);
 		// int indice =alquieres.get(indice);
-		alquileres.addAll(alquileres);
+		alquileres.add(new Alquiler(cliente, vehiculo));
 	}
 
 	// compruebaExista (indiceNosuperaTamano)
@@ -124,14 +120,14 @@ public class Alquileres {
 
 	/**
 	 * @param indice
-	 * @return boolean si indice supera false, si es menor true 
+	 * @return boolean si indice supera false, si es menor true
 	 */
 	private boolean indiceNoSuperaTamano(int indice) {
 		return indice < alquileres.size();
 
 	}
 
-	// cerrar trabajo ( buscarAlquilerAbierto)
+	// cerrar alquiler ( buscarAlquilerAbierto)
 	/**
 	 * @param vehiculo
 	 */
@@ -162,6 +158,69 @@ public class Alquileres {
 
 	}
 
+	// ObtenerAlquileresAbiertos
+
+	public List<Alquiler> obtenerAlquileresAbiertos() {
+		int posicion = 0;
+
+		// Interfaz List implemente la clase Vector
+		List<Alquiler> alquileresAbiertos = new Vector<Alquiler>();
+
+		while (posicion < alquileres.size()) {
+
+			if (alquileres.get(posicion).getDias() == 0) {
+
+				alquileresAbiertos.add(alquileres.get(posicion));
+			}
+			posicion++;
+		}
+
+		return alquileresAbiertos;
+	}
+
+	// ObtenerAlquileresClientes (String dni )
+
+	public List<Alquiler> obtenerAlquileresCliente(String dni) { // nombre del metodo
+
+		int posicion = 0;
+
+		List<Alquiler> alquileresCliente = new Vector<Alquiler>(); // instancia la interfaz list con vector
+
+		while (posicion < alquileres.size()) { // mientras
+
+			if (alquileres.get(posicion).getCliente().getDni().equals(dni)) { // condicion
+
+				alquileres.add(alquileres.get(posicion)); //
+			}
+
+			posicion++;
+		}
+		return alquileresCliente;
+	}
+
+	// Obtener AlquileresVehiculos
+
+	public List<Alquiler> obtenerAlquileresVehiculos(String matricula){
+		 int posicion = 0; 
+		  
+		 List <Alquiler> alquileresVehiculos = new Vector <Alquiler> ();
+		 
+		 while (posicion<alquileres.size()) {
+			 
+			if (alquileres.get(posicion).getVehiculo().getMatricula().equals(matricula)) {
+				
+				alquileres.add(alquileres.get(posicion));
+			}
+			 
+			posicion++;
+		 }
+		
+		 return alquileresVehiculos;
+	}
+	
+	
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -172,4 +231,6 @@ public class Alquileres {
 		return "Alquileres [alquileres=" + alquileres + ", FICHERO_ALQUILERES=" + FICHERO_ALQUILERES + "]";
 	}
 
+
+	
 }
