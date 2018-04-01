@@ -1,7 +1,5 @@
 package alquilerVehiculos.aplicacion;
 
-
-
 import alquilerVehiculos.modelo.AlquilerVehiculos;
 import alquilerVehiculos.modelo.IModeloAlquilerVehiculos;
 import alquilerVehiculos.mvc.controlador.ControladorAlquilerVehiculos;
